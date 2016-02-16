@@ -1,2 +1,16 @@
-# mulberry-page
-Pagina web para verificar si clientes tienen pagos por realizar en almacenes de comercio de la provincia de Orellana y Sucumbios
+Page Mulberry
+
+[Descripción del proyecto]
+
+[Instalacion]
+- Requisitos
+- Versión
+- Encargados del proyecto
+
+[Uso]
+
+[Documentación]
+
+[Roadmap]
+
+[Licencia]
