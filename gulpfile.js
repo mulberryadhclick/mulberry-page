@@ -1,6 +1,10 @@
 var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var sass = require('gulp-sass');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var uglify = require('gulp-uglify');
 
 var config ={
 	sass:{
@@ -10,6 +14,15 @@ var config ={
 	},
 	html:{
 		watch: './build/*.html'
+	},
+	scripts:{
+		main: './src/scripts/main.js',
+		watch: './src/scripts/**/*.js',
+		output: './build/js'
+	}
+	images: {
+		watch: ['./build/img/*.png', './build/*.jpg', './build/*.svg'],
+		output: './dist/img'
 	}
 }
 gulp.task('server', function(){
@@ -30,6 +43,15 @@ gulp.task('build:css', function(){
 		.pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
 		.pipe(gulp.dest(config.sass.output));
 });
+
+gulp.task('build:js', function(){
+	return browserify(config.scripts.main)
+		.bundle()
+		.pipe(source('bundle.js'))
+		.pipe(buffer())
+		.pipe(uglify())
+		.pipe(gulp.dest(config.scripts.output))
+	});
 
 gulp.task('watch', function(){
 	gulp.watch(config.sass.watch, ['build:css']);
