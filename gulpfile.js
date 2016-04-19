@@ -9,11 +9,11 @@ var config ={
 		output: './build/css'
 	},
 	html:{
-		watch: './src/*.html'
+		watch: './build/*.html'
 	}
 }
 gulp.task('server', function(){
-	gulp.src('./src')
+	gulp.src('./build')
 		.pipe(webserver({
 			host: '0.0.0.0',
 			port: 8080,
