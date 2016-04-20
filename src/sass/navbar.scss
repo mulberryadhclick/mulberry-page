@@ -1,0 +1,14 @@
+nav {
+    @extend .pink;
+
+	& .brand-logo {
+		padding-left: 10px;
+	}
+	ul {
+		li:hover{
+			@extend .pink;
+			
+		}
+	}
+}
+

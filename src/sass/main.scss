@@ -1,1 +1,15 @@
-@import "materialize";
+@import "ghpages-materialize";
+nav {
+    @extend .purple;
+
+	& .brand-logo {
+		padding-left: 10px;
+	}
+	ul {
+		li{
+			a:hover{
+				@extend .purple, .darken-2;
+			}
+		}
+	}
+}

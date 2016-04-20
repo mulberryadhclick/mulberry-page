@@ -58,11 +58,11 @@ footer.example {
   padding-left: 0;
 }
 
-@media #{$medium-and-down} {
-  header, main, footer {
-    padding-left: 0;
-  }
-}
+// @media #{$medium-and-down} {
+//   header, main, footer {
+//     padding-left: 0;
+//   }
+// }
 
 /********************
   Index Page Styles

@@ -19,7 +19,7 @@ var config ={
 		main: './src/scripts/main.js',
 		watch: './src/scripts/**/*.js',
 		output: './build/js'
-	}
+	},
 	images: {
 		watch: ['./build/img/*.png', './build/*.jpg', './build/*.svg'],
 		output: './dist/img'
@@ -58,5 +58,5 @@ gulp.task('watch', function(){
 	gulp.watch(config.html.watch, ['build']);
 	});
 
-gulp.task('build', ['build:css']);
+gulp.task('build', ['build:css', 'build:js']);
 gulp.task('default', ['server', 'watch', 'build']);
