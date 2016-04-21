@@ -5,6 +5,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel')
 
 var config ={
 	sass:{
@@ -29,34 +30,38 @@ gulp.task('server', function(){
 	gulp.src('./build')
 		.pipe(webserver({
 			host: '0.0.0.0',
-			port: 8080,
+			port: 4040,
 			livereload: {
 				enable: true,
 				port: 35728
 			}
-
 		}));
 });
 
-gulp.task('build:css', function(){
-	gulp.src(config.sass.main)
-		.pipe(sass({outputStyle:'compressed'}).on('error', sass.logError))
-		.pipe(gulp.dest(config.sass.output));
-});
-
-gulp.task('build:js', function(){
+gulp.task('build:js', function() {
 	return browserify(config.scripts.main)
 		.bundle()
 		.pipe(source('bundle.js'))
 		.pipe(buffer())
 		.pipe(uglify())
-		.pipe(gulp.dest(config.scripts.output))
-	});
+		.pipe(babel())
+		.pipe(gulp.dest(config.scripts.output));
+});
+
+gulp.task('build:css', function(){
+	gulp.src(config.sass.main)
+		.pipe(sass({
+			outputStyle:'compressed'
+		})
+		.on('error', sass.logError))
+		.pipe(gulp.dest(config.sass.output));
+});
 
 gulp.task('watch', function(){
+	gulp.watch(config.scripts.watch, ['build:js']);
 	gulp.watch(config.sass.watch, ['build:css']);
 	gulp.watch(config.html.watch, ['build']);
-	});
+});
 
 gulp.task('build', ['build:css', 'build:js']);
 gulp.task('default', ['server', 'watch', 'build']);
