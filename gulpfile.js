@@ -45,7 +45,8 @@ gulp.task('build:js', () => {
 		.pipe(buffer())
 		.pipe(uglify())
 		.pipe(babel({
-			presets:['es2015']
+			presets:['es2015'],
+			compact: false
 		}))
 		.pipe(gulp.dest(config.scripts.output));
 });

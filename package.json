@@ -19,7 +19,6 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-sass": "^2.2.0",
     "gulp-smoosher": "0.0.9",
-    "gulp-stylus": "^2.3.1",
     "gulp-uglify": "^1.5.3",
     "gulp-webserver": "^0.9.1",
     "vinyl-buffer": "^1.0.0",
@@ -30,15 +29,23 @@
     "materialize-css": "^0.97.6",
     "normalize-scss": "^4.0.3"
   },
-  "browser":{
-    "jquery" : "./node_modules/jquery/dist/jquery.js",
-    "materialize" : "./node_modules/materialize-css/bin/materialize.js"
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "materialize": "./node_modules/materialize-css/bin/materialize.js"
   },
-  "browserify-shim" : {
+  "browserify-shim": {
     "jquery": "$",
-    "materialize" : "materialize"
-    },
-  "browserify" : {
-    "transform" : ["browserify-shim"]
+    "materialize": "materialize"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "babel": {
+    "ignore": [
+      "./node_modules/jquery/dist/jquery.js",
+      "/node_modules/materialize-css/bin/materialize.js"
+    ]
   }
 }
