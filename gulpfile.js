@@ -5,7 +5,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
-var babel = require('gulp-babel')
+var babel = require('gulp-babel');
 
 var config ={
 	sass:{
@@ -30,7 +30,7 @@ gulp.task('server', function(){
 	gulp.src('./build')
 		.pipe(webserver({
 			host: '0.0.0.0',
-			port: 4040,
+			port: 8080,
 			livereload: {
 				enable: true,
 				port: 35728
@@ -38,13 +38,15 @@ gulp.task('server', function(){
 		}));
 });
 
-gulp.task('build:js', function() {
+gulp.task('build:js', () => {
 	return browserify(config.scripts.main)
 		.bundle()
 		.pipe(source('bundle.js'))
 		.pipe(buffer())
 		.pipe(uglify())
-		.pipe(babel())
+		.pipe(babel({
+			presets:['es2015']
+		}))
 		.pipe(gulp.dest(config.scripts.output));
 });
 
