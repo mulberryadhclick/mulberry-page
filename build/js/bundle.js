@@ -4628,7 +4628,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       });
     }).call(this, "undefined" != typeof global ? global : "undefined" != typeof self ? self : "undefined" != typeof window ? window : {});
   }, {}], 3: [function (e, t, n) {
-    var i = e("jquery");e("materialize"), i(document).ready(function () {
+    var i = e("jquery");e("materialize");i(document).ready(function () {
       i(".button-collapse").sideNav();
     });
   }, { jquery: 1, materialize: 2 }] }, {}, [3]);

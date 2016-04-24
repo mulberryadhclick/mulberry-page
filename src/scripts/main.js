@@ -1,5 +1,5 @@
 var $ = require('jquery');
-require('materialize');
+var materialize= require('materialize');
 
 $(document).ready(function(){
 	$(".button-collapse").sideNav();
